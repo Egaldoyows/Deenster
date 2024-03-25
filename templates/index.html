@@ -1,0 +1,427 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+
+  {% block title%}
+  Deenstar | welcome
+  {% endblock title %}
+ 
+
+ {% block content %}
+
+  <!-- ======= Intro Section ======= -->
+  <div class="intro intro-carousel swiper position-relative">
+
+    <div class="swiper-wrapper">
+
+       <!-- ======= slider 1 ======= -->
+
+       {% for pack in hot %}
+
+       {% if pack.cover_image %}
+       <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url('{{ pack.cover_image.url }}')">
+
+        {% else %}
+
+        <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(/static/assets/img/slider/slider-2.jpg)">
+          {% endif%}
+        
+
+        <div class="overlay overlay-a"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+                    <p class="intro-title-top">{{pack.name}}
+                      <br> 
+                    </p>
+                    <h1 class="intro-title mb-4 ">
+                      <span class="color-b"></span> {{pack.description}}
+                      <br> 
+                    </h1>
+                    <p class="intro-subtitle intro-price">
+                      <a href="{% url 'single-package' %}?id={{pack.id}}"><span class="price-a">From | KES {{pack.van_price | intcomma}}</span></a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      {% endfor%}
+      
+
+
+    </div>
+
+
+    <div class="swiper-pagination"></div>
+  </div><!-- End Intro Section -->
+
+  <main id="main">
+
+     <!--hero start-->
+
+<div class="items">
+
+  <div class="px-4 pt-5 my-5 text-center border-bottom">
+    <h1 class="display-4 fw-bold color-b">Themed Packages just for You</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">Explore the stunning landscapes and diverse wildlife of Kenya, from national reserve safaris to traditional Swahili culture. Immerse yourself in the unique experiences this destination has to offer.</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+        <button type="button" class="btn btn-success btn-lg px-4 me-sm-3" data-bs-toggle="modal" data-bs-target="#myModal">Get a Quote</button>
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Get intouch</button>
+      </div>
+    </div>
+    <div class="overflow-hidden" style="max-height: 30vh;">
+      <div class="container px-5">
+        
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+ <!--Hero end-->
+
+
+
+
+
+
+
+
+
+
+
+ <!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Request a quote</h4>
+        
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+
+        <form>
+          <div class="form-group">
+            <label for="name"><strong>Full Names </strong></label>
+            <input class="form-control" id="name" type="text" placeholder="Your Full Name" required>
+            <hr>
+            <label for="email"><strong>Email </strong></label>
+            <input class="form-control" id="email" type="email" placeholder="Your email" required>
+            <hr>
+            <label for="Nop"><strong>Number of people </strong></label>
+            <input class="form-control" id="Nop" type="number" placeholder="Number of People" required>
+         
+
+        <hr>
+        <label for="des"><strong>Destination </strong></label>
+        <select class="form-control" id="des">
+          <option>Choose Destination</option>
+          <option>Destination 1</option>
+          <option>Destination 2</option>
+          <option>Destination 3</option>
+        </select>
+
+
+      </div>
+    
+
+
+
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success" >Submit</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+      
+
+    </form>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- ======= Latest Properties Section ======= -->
+    <section class="section-property section-t8">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-wrap d-flex justify-content-between">
+              <div class="title-box">
+                <h2 class="title-a color-b">Recommended Packages for you</h2>
+              </div>
+              <div class="title-link">
+                <a href="/packages">All Packages
+                  <span class="bi bi-chevron-right"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div id="property-carousel" class="swiper">
+          <div class="swiper-wrapper">
+
+            
+            
+            {% for destination in destinations  %}
+
+            <div class="carousel-item-b swiper-slide">
+
+
+              <div class="card-box-a card-shadow">
+                <div class="img-box-a">
+                  {% if pack.cover_image %}
+                  <img src="{{pack.cover_image.url}}" alt="" class="img-a img-fluid">
+
+                  {% else %}
+
+                  <img src="{% static 'assets/img/packages/packages-2.jpg' %}" alt="" class="img-a img-fluid">
+                  {% endif %}
+                </div>
+                <div class="card-overlay">
+                  <div class="card-overlay-a-content">
+                    <div class="card-header-a">
+                      <h2 class="card-title-a">
+                        <a href="{%url 'allpackages' %}?name={{destination.des_name}}">{{destination.des_name}}
+                          <br />(Hotels: {{destination.num_hotels}})</a>
+                      </h2>
+                    </div>
+                    <div class="card-body-a">
+                      <div class="price-box d-flex">
+                        <span class="price-a">From | KES {{pack.van_price}}</span>
+                      </div>
+                      <a href="{%url 'allpackages' %}?name={{destination.des_name}}" class="link-a">See all in {{destination.des_name}}
+                        <span class="bi bi-chevron-right"></span>
+                      </a>
+                    </div>
+                   
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+
+
+            {%endfor%}
+
+           
+            
+            
+            <!-- End carousel item -->
+            
+
+            
+          </div>
+        </div>
+        <div class="propery-carousel-pagination carousel-pagination"></div>
+
+      </div>
+    </section><!-- End Latest Properties Section -->
+
+  {% if hot %}
+
+     <!-- ======= Latest News Section ======= -->
+     <section class="section-news section-t8">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-wrap d-flex justify-content-between">
+              <div class="title-box">
+                <h2 class="title-a"><span class="color-b">HOTEST </span>Deals</h2>
+              </div>
+              <div class="title-link">
+                <a href="#">All Packages
+                  <span class="bi bi-chevron-right"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="news-carousel" class="swiper">
+          <div class="swiper-wrapper">
+
+           
+            
+
+            {% for pack in hot %}
+
+           
+
+            <div class="carousel-item-c swiper-slide">
+              <div class="card-box-b card-shadow news-box">
+                <div class="img-box-b">
+
+                  {% if pack.cover_image %}
+                  <img src="{{pack.cover_image.url}}" alt="" class="img-a img-fluid">
+
+                  {% else %}
+
+                  <img src="{% static 'assets/img/packages/packages-2.jpg' %}" alt="" class="img-a img-fluid">
+                  {% endif %}
+                </div>
+                <div class="card-overlay">
+                  <div class="card-header-b">
+                    <div class="card-category-b">
+                      <a href="{% url 'single-package' %}?id={{pack.id}}" class="category-b">FROM Ksh. {{pack.van_price | intcomma}}</a>
+                    </div>
+                    <div class="card-title-b">
+                      <h2 class="title-2">
+                        <a href="{% url 'single-package' %}?id={{pack.id}}"> {{pack.name}}
+                          <br> </a>
+                      </h2>
+                    </div>
+                    <div class="card-date">
+                      <span class="date-b"><strong>{{pack.description}}</strong></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End carousel item -->
+
+            {% endfor %}
+
+          </div>
+        </div>
+
+        <div class="news-carousel-pagination carousel-pagination"></div>
+      </div>
+    </section><!-- End Latest News Section -->
+
+    {% endif %}
+
+            
+
+    <!-- ======= Testimonials Section ======= -->
+    <section class="section-testimonials section-t8 nav-arrow-a">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-wrap d-flex justify-content-between">
+              <div class="title-box">
+                <h2 class="title-a">Testimonials</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="testimonial-carousel" class="swiper">
+          <div class="swiper-wrapper">
+
+            <div class="carousel-item-a swiper-slide">
+              <div class="testimonials-box">
+                <div class="row">
+                  <div class="col-sm-12 col-md-6">
+                    <div class="testimonial-img">
+                      <img src="{% static 'assets/img/packages/pac-1.jpg' %}" alt="" class="img-fluid">
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <div class="testimonial-ico">
+                      <i class="bi bi-chat-quote-fill"></i>
+                    </div>
+                    <div class="testimonials-content">
+                      <p class="testimonial-text">
+                        We had the most remarkable family tour with Deenstar Tours. Not only everything was perfect,
+                         but we felt, in every instance,
+                         that our guides truly cared about us, 
+                         both the kids and adults, and did their best to make this trip memorable.
+                      </p>
+                    </div>
+                    <div class="testimonial-author-box">
+                      
+                      <h5 class="testimonial-author">Ahmed & Aisha</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End carousel item -->
+
+            <div class="carousel-item-a swiper-slide">
+              <div class="testimonials-box">
+                <div class="row">
+                  <div class="col-sm-12 col-md-6">
+                    <div class="testimonial-img">
+                      <img src="{% static 'assets/img/packages/pac-2.jpg' %}" alt="" class="img-fluid">
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <div class="testimonial-ico">
+                      <i class="bi bi-chat-quote-fill"></i>
+                    </div>
+                    <div class="testimonials-content">
+                      <p class="testimonial-text">
+                        What a wonderful experience! The two tour leaders who were archaeologists 
+                        enthralled us with the history of the Coast. The food was bountiful.
+                         On the boat the meals were wholesome and delicious.
+                      </p>
+                    </div>
+                    <div class="testimonial-author-box">
+                      
+                      <h5 class="testimonial-author">Njoroge & Emma</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End carousel item -->
+
+          </div>
+        </div>
+        <div class="testimonial-carousel-pagination carousel-pagination"></div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+  </main><!-- End #main -->
+
+  {% endblock content %}

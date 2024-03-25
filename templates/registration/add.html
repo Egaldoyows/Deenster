@@ -1,0 +1,46 @@
+{% extends 'admin-base.html' %}
+{% load static %}
+{%load humanize %}
+
+{% block title%}
+Deenstar | Dashboard
+{% endblock title%}
+
+{% block content %}
+
+
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+
+
+
+
+
+
+
+
+
+
+<div class="mt-4 p-5 bg-warning  rounded">
+    <h3 class="text-center">Create Package</h3>
+    <br>
+   
+    <form action="">
+        {{form}}
+        <br>
+    <button type="submit" class="btn btn-success float-end">Create Package</button>
+   </form>
+  </div>
+
+ 
+
+
+</div>
+<div class="col-sm-2"></div>
+</div>
+
+
+
+
+{% endblock content %}

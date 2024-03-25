@@ -1,0 +1,81 @@
+{% extends 'admin-base.html' %}
+{% load static %}
+{%load humanize %}
+
+{% block title%}
+Deenstar | Dashboard
+{% endblock title%}
+
+
+{% block content%}
+
+
+
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+
+
+
+
+{% if tour %}
+
+
+
+
+
+<div class="mt-4 p-5 bg-warning  rounded">
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Date requested</th>
+            <th>Email</th>
+            <th>ID</th>
+            <th>Phone</th>
+            <th>Naitionality</th>
+            <th>Package</th>
+            <th>No. of People</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+       
+        <tbody>
+          <tr>
+            <td>{{tour.full_name}}</td>
+            <td>{{tour.created |timesince}} Ago</td>
+            <td>{{tour.email}}</td>
+            <td>{{tour.identity_number}}</td>
+            <td>{{tour.phone_number}}</td>
+            <td>{{tour.naitionality}}</td>
+            <td>{{tour.package}}</td>
+            <td>{{tour.number}}</td>
+            <td>Ksh.{{tour.price | intcomma}}</td>
+          </tr>
+          <tr>
+          
+        </tbody>
+      </table>
+  
+
+    
+    
+    <a href="#" class="btn btn-success float-end">Reactivate this Request</a>
+   
+    
+  </div>
+
+  {% else %}
+
+  <p>{{travelor}}</p>
+
+  {% endif %}
+
+
+
+</div>
+<div class="col-sm-1"></div>
+</div>
+
+
+  {% endblock content%}

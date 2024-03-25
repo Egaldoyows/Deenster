@@ -1,0 +1,46 @@
+
+
+
+{% extends 'mails/email_base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="mt-4 p-5 bg-light border rounded">
+    <img height="100px" width="150px" src="{% static 'assets/img/logo.png'%}" alt="">
+    <h1 >NEW BOOKING REQUEST</h1>
+    <br>
+
+
+    <h5>Log in to your admin panel to view more details and book the request</h5>
+    <hr>
+
+    <table style="width:100%">
+      <tr>
+        <th>Name:</th>
+        <td>{{name}}</td>
+      </tr>
+      <tr>
+        <th>package:</th>
+        <td>5{{package}}</td>
+      </tr>
+      <tr>
+        <th>Telephone:</th>
+        <td>{{contact}}</td>
+      </tr>
+    </table>
+    <hr>
+
+      <h5>Note:<i> This email was sent from deenster booking system. please do not reply</i></h5>
+      
+    
+
+
+
+
+
+
+  </div>
+
+
+  {% endblock content %}

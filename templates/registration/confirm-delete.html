@@ -1,0 +1,34 @@
+{% extends 'admin-base.html' %}
+{% load static %}
+{%load humanize %}
+
+{% block title%}
+Deenstar | Dashboard
+{% endblock title%}
+
+{% block content %}
+
+
+
+<form action="{% url 'delete-package' %}?package_id={{package.id}}" method="post">
+    {% csrf_token %}
+            
+<h5 style="color: red;">Confirm Deletion of package</h5>
+<h6>Name: {{package.name}}</h6>
+<p>Description: {{package.description}}</p>
+<p>Start Date: {{package.start_date}}</p>
+<p>End Date: {{package.end_date}}  </p>
+<button class="btn btn-danger" type="submit">Delete package</button>
+<a class="btn btn-primary" href="#">Cancel</a>
+
+</form>          
+            
+
+
+
+
+
+
+
+
+{% endblock content %}

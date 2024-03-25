@@ -1,0 +1,57 @@
+{% extends 'admin-base.html' %}
+{% load static %}
+{%load humanize %}
+
+{% block title%}
+Deenstar | Dashboard
+{% endblock title%}
+
+{% block content %}
+
+
+
+
+            <div class="row mb-2">
+    
+            
+            
+                <div class="col-md-6">
+                  <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                      <strong class="d-inline-block mb-2 text-success">{{name}}</strong>
+                      <h3 class="mb-0">{{item.name}} {{item.des_name}}</h3><br>
+                      <div class="mb-1 text-muted">Description</div>
+                      <p class="mb-auto">{{item.desc}}</p><br>
+
+                      <a href="#" class="stretched-link">Edit this {{name}}</a>
+                    </div>
+                    <div class="col-auto d-none d-lg-block">
+
+                        {% if item.cover_image %}
+                  <img src="{{item.cover_image.url}}" width="200" height="250" alt="image display failed" class="img-a img-fluid">
+
+                  {% else %}
+
+                  <img src="{% static 'assets/img/no_image.png' %}" width="200" height="250" alt="" class="img-a img-fluid">
+
+                  {% endif %}
+
+
+
+                       
+            
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+            
+
+
+
+
+
+
+
+
+{% endblock content %}

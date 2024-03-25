@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %} 
+
+
+
+  {% block title%}
+  Deenstar | package
+  {% endblock title %}
+ 
+
+ {% block content %}
+
+  <!-- ======= Intro Section ======= -->
+  <div class="intro-carousel swiper" style="padding-top: 12rem;">
+    
+
+   
+  </div><!-- End Intro Section -->
+
+  <ul class="list-group">
+
+
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8">
+        <div class="row" style="padding-left: 5rem;">
+        <!-- <h3>Showing {{counter}} hotels in {{name}}</h3>
+
+        {% for hotel in hotels %}
+
+
+        <li class="list-group-item">{{hotel.name}} {{hotel.num_packages}}</li>
+
+        {% endfor %} -->
+        <h3>Showing packages in {{name}}</h3>
+        <hr>
+
+        {% for pack in packages %}
+
+
+        <div class="card" style="width: 18rem; margin-left: 1rem;">
+         {% if pack.cover_image %} 
+          
+          <img class="card-img-top" src="{{pack.cover_image.url}}" alt="Card image cap">
+          {% else %}
+          <img class="card-img-top" src="{% static 'images/default.jpg' %}" alt="Card image cap">
+          {% endif %}
+          
+         
+          <div class="card-body">
+            <h5 class="card-title">{{pack.name}}</h5>
+            <p class="card-text">{{pack.description}}</p>
+            <p class="card-text">From: Ksh. {{pack.van_price | intcomma}}</p>
+            <a href="{% url 'single-package' %}?id={{pack.id}}" class="btn btn-warning">View package detail >>></a>
+          </div>
+        </div>
+
+
+
+        {% endfor %}
+
+
+      </div>
+
+
+
+      </div>
+      <div class="col-sm-2"></div>
+      
+    </div>
+    
+    
+
+    
+    
+  </ul>
+
+  
+
+
+ {% endblock content %}

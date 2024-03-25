@@ -1,0 +1,82 @@
+{% extends 'admin-base.html' %}
+{% load static %}
+{%load humanize %}
+
+{% block title%}
+Deenstar | Dashboard
+{% endblock title%}
+
+{% block content %}
+
+
+
+
+            <div class="row mb-2">
+
+                {% for pack in packages %}
+    
+            
+            
+                <div class="col-md-6">
+                  <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                      <strong class="d-inline-block mb-2 text-success">{{pack.name}} Hotel</strong>
+                      <h3 class="mb-0">{{item.name}} {{item.des_name}}</h3><br>
+                      <div class="mb-1 text-muted">Description</div>
+                      <p class="mb-auto">{{pack.description}}</p><br>
+
+                      <div class="float-end">
+                        <a  data-bs-toggle="tooltip" title="Edit"  href="{% url 'edit-package'%}?package_id={{pack.id}}"><i  data-feather="edit">  </i></a> 
+               
+                         <a href="{% url 'delete-package' %}?package_id={{pack.id}}"><i  data-feather="trash-2"></i></a>
+                         </div>
+                      
+                    </div>
+                    <div class="col-auto d-none d-lg-block">
+
+                        {% if pack.cover_image %}
+                        <img src="{{ pack.cover_image.url }}" width="200" height="250" alt="image display failed" class="img-a img-fluid">
+      
+                        {% else %}
+      
+                        <img src="{% static 'assets/img/no_image.png' %}" width="200" height="250" alt="" class="img-a img-fluid">
+      
+                        {% endif %}
+                        
+
+                      
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+    
+                  
+                  
+
+
+
+                {% endfor %}
+
+
+
+
+
+
+              </div>
+            
+
+
+              
+            
+
+
+
+
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends 'admin-base.html' %}
+{% load static %}
+{%load humanize %}
+
+{% block title%}
+Deenstar | Dashboard
+{% endblock title%}
+
+{% block content %}
+<div class="row">
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+
+        <div>
+
+
+<form action="{% url 'activity-edit'%}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="btn btn-warning float-end" type="submit">Save changes</button>
+</form>
+</div>
+
+{% endblock content %}

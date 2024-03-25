@@ -1,0 +1,47 @@
+ <div class="carousel-item-b swiper-slide">
+              <div class="card-box-a card-shadow">
+                <div class="img-box-a">
+                  <img src="assets/img/packages/packages-2.jpg" alt="" class="img-a img-fluid">
+                </div>
+                <div class="card-overlay">
+                  <div class="card-overlay-a-content">
+                    <div class="card-header-a">
+                      <h2 class="card-title-a">
+                        <a href="property-single.html">5 Days
+                          <br /> Nakuru national park</a>
+                      </h2>
+                    </div>
+                    <div class="card-body-a">
+                      <div class="price-box d-flex">
+                        <span class="price-a">From | KES 20,000</span>
+                      </div>
+                      <a href="#" class="link-a">Click here to view
+                        <span class="bi bi-chevron-right"></span>
+                      </a>
+                    </div>
+                    <div class="card-footer-a">
+                      <ul class="card-info d-flex justify-content-around">
+                        <li>
+                          <h4 class="card-info-title">Rooms</h4>
+                          <span>1
+                            <!--<sup>2</sup> -->
+                          </span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Beds</h4>
+                          <span>1 (king Size)</span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Game Dive</h4>
+                          <span>Not included</span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Meals</h4>
+                          <span>Included</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>

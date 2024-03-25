@@ -1,0 +1,41 @@
+{% extends 'admin-base.html' %}
+{% load static %}
+{%load humanize %}
+
+{% block title%}
+Deenstar | Dashboard
+{% endblock title%}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+
+        <div>
+            
+            
+
+<form action="{% url 'activity-create' %}" method="post">
+    {% csrf_token %}
+    <h4>{{form_type}}</h4>
+    <hr>
+
+    {{form.as_p}}
+
+
+<button class="btn btn-warning btn-lg float-end" type="submit">Create</button>
+</form>
+
+</div>
+
+
+</div>
+<div class="col-sm-2"></div>
+
+</div>
+
+
+
+
+{% endblock content %}

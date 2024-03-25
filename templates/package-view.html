@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+
+  {% block title%}
+  Deenstar | booking
+  {% endblock title %}
+ 
+
+ {% block content %}
+    <!-- ======= Intro Section ======= -->
+    <div class="intro-carousel swiper" style="padding-top: 12rem;">
+    
+
+   
+    </div><!-- End Intro Section -->
+
+
+<div class="b-example-divider"></div>
+
+  <div class="container px-4 py-5">
+
+  
+    {%if error%}
+    <h2>{{error}}</h2>
+    {% else %}
+
+    <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
+      
+      <div class="d-flex flex-column align-items-start gap-2">
+        <h3 class="fw-bold">Trip to {{package.name}}</h3>
+        <p class="text-muted">{{package.description}}</p>
+
+        <img height="200px" width="350px" src="{% static 'images/default.jpg' %}" alt="Card image cap">
+        <hr>
+
+        <div class="row">
+
+
+          <div class="col-sm-4">
+            <h6>Included</h6>
+            <hr>
+       
+          <ul style="list-style: lower-roman;">
+
+            {% for inc in package.addons.all %}
+
+          <li>{{inc}}</li>
+          {% endfor %}
+          </ul>
+          </div>
+
+
+          <div class="col-sm-4 ">
+
+
+          </div>
+
+          <div class="col-sm-4 ">
+
+            <h6>Not included</h6>
+            <hr>
+            <ul style="list-style: lower-roman;">
+
+              {% for exc in package.excluded.all %}
+
+              <li>{{exc}}</li>
+              {% endfor %}
+              </ul>
+
+
+
+          </div>
+
+
+        </div>
+
+          
+         
+
+
+        
+        
+        <a href="{% url 'book'%}?id={{package.id}}" class="btn btn-warning btn-lg">Proceed to book >>> </a>
+      </div>
+
+
+     <div>
+      {% if schedule %}
+      <h2 class="pb-2 border-bottom">Tour Activities Schedule</h2>
+
+      <div class="row row-cols-1 row-cols-sm-2 g-4">
+
+        
+
+        {% for sch in schedule %}
+
+
+        <div class="d-flex flex-column gap-2">
+          <h4 class="fw-semibold mb-0">Day {{sch.days}}</h4>
+          <p class="text-muted">
+
+            
+
+            <ul>
+              {% for activity in sch.activities.all %}
+              <li>{{activity}}</li>
+              {% endfor %}
+            </ul>
+
+
+
+
+
+          </p>
+        </div>
+
+
+
+        {% endfor %}
+
+
+        {% endif %}
+
+
+            
+        
+
+
+
+        </div>
+        
+
+      </div>
+   
+
+
+
+
+        
+       
+
+
+        
+       
+     
+
+
+
+    
+        
+    
+
+
+      </div>
+    </div>
+  </div>
+
+  {% endif%}
+
+  
+
+
+  {% endblock content %}

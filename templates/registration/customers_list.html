@@ -1,0 +1,176 @@
+{% extends 'admin-base.html' %}
+{% load static %}
+{%load humanize %}
+
+{% block title%}
+Deenstar | Dashboard
+{% endblock title%}
+
+{% block booked %} active  {% endblock booked %}
+
+
+          {% block export%}
+        
+
+          <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+          
+          {% endblock export%}
+
+
+{% block content %}
+
+
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+
+
+
+
+
+
+      
+
+
+
+      <style>
+        .bd-placeholder-img {
+          font-size: 1.125rem;
+          text-anchor: middle;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          user-select: none;
+        }
+  
+        @media (min-width: 768px) {
+          .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+          }
+        }
+  
+        .b-example-divider {
+          height: 3rem;
+          background-color: rgba(0, 0, 0, .1);
+          border: solid rgba(0, 0, 0, .15);
+          border-width: 1px 0;
+          box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+  
+        .b-example-vr {
+          flex-shrink: 0;
+          width: 1.5rem;
+          height: 100vh;
+        }
+  
+        .bi {
+          vertical-align: -.125em;
+          fill: currentColor;
+        }
+  
+        .nav-scroller {
+          position: relative;
+          z-index: 2;
+          height: 2.75rem;
+          overflow-y: hidden;
+        }
+  
+        .nav-scroller .nav {
+          display: flex;
+          flex-wrap: nowrap;
+          padding-bottom: 1rem;
+          margin-top: -1px;
+          overflow-x: auto;
+          text-align: center;
+          white-space: nowrap;
+          -webkit-overflow-scrolling: touch;
+        }
+      </style>
+  
+      
+      <!-- Custom styles for this template -->
+      <link href="dashboard.css" rel="stylesheet">
+    </head>
+    <body>
+      
+  
+  
+ 
+  
+    
+  
+        
+
+
+        <h2>{{category}}</h2>
+      <div class="table-responsive">
+        <table class="table table-sm table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Requested On</th>
+              <th scope="col">Full Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Package</th>
+              <th scope="col">Price</th>
+              
+              
+            </tr>
+          </thead>
+          <tbody>
+           
+
+            {% for tour in tours %}
+            
+
+            <tr >
+              <td>{{tour.created | naturalday}}</td>
+              
+              <td><a href="{% url 'single-accepted' %}?id={{tour.id}}" style="text-decoration: none">{{tour.full_name}}</a></td>
+              <td>{{tour.email}}  </td>
+              <td>{{tour.package}}</td>
+              <td>Ksh. {{tour.price | intcomma}} ~ <i>booked on:   {{tour.updated_on |naturalday}}</i></td>
+              
+            </tr>
+
+            
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}
+
+
+
+
+

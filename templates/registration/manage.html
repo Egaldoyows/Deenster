@@ -1,0 +1,102 @@
+{% extends 'admin-base.html' %}
+{% load static %}
+{%load humanize %}
+
+{% block title%}
+Deenstar | Dashboard
+{% endblock title%}
+
+{% block items %}
+active
+{% endblock items %}
+
+{% block content %}
+
+<div class="btn-group btn-group-lg">
+    <a href="{% url 'dest-create' %}" class="btn btn-success" >Create Destination</a>
+    <a href="{% url 'hotel-create' %}" class="btn btn-success" >Create Hotel</a>
+    <a href="{% url 'package-create' %}" class="btn btn-success" >Create Package</a>
+    <a href="{% url 'activity-create' %}" class="btn btn-success" >Create Activity</a>
+    <a href="#" class="btn btn-success" >View Packages</a>
+    
+  </div>
+  <hr>
+      <h4 class="alert alert-secondary">Existing Destinations and Hotels</h4>
+  <div class="row">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th><h3>Destinations</h3></th>
+          <th><h3>Hotels</h3></th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        {% for destination_data in destination_list %}
+        <tr>
+          
+          
+          <td><strong><a style="text-decoration: none;" href="{% url 'single-dest'%}?id={{destination_data.destination.id}}"> {{ destination_data.destination.des_name }}</a> </strong></td>
+          <td>
+            <ul>
+              {% for hotel in destination_data.hotels %}
+              <li><a style="text-decoration: none;" href="{% url 'single-hotel'%}?id={{hotel.id}}"> {{ hotel.name }}</a></li>
+              {% endfor %}
+              
+            </ul>
+            
+          </td>
+          
+              
+          
+        </tr>
+        {% endfor %}
+       
+      </tbody>
+    </table>
+    <hr>
+    <h4 class="alert alert-secondary">Existing Activities</h4>
+    <ul class="list-group">
+      {% for activity in activites %}
+      <li class="list-group-item">{{activity.activity_name}}
+        <div class="float-end">
+          <a  data-bs-toggle="tooltip" title="Edit"  href="{% url 'activity-edit'%}?id={{activity.id}}"><i  data-feather="edit">  </i></a> 
+ 
+           <a  data-bs-toggle="tooltip" title="Delete" href="#"><i  data-feather="trash-2"></i></a>
+           </div>
+
+
+
+      </li>
+      {% endfor %}
+      
+      
+    </ul>
+    <hr>
+    <h4 class="alert alert-secondary">Existing Addons</h4>
+    <ul class="list-group">
+
+      {% for addon in addons %}
+      <li class="list-group-item">{{addon.addon}}
+        <div class="float-end">
+         <a  data-bs-toggle="tooltip" title="Edit"  href="#"><i  data-feather="eye">  </i></a> 
+
+          <a  data-bs-toggle="tooltip" title="Delete" href="#"><i  data-feather="trash-2"></i></a>
+          </div>
+        </li>
+      {% endfor %}
+      
+      
+    </ul>
+  </div>
+
+  
+  
+
+
+
+
+
+
+{% endblock content %}
+

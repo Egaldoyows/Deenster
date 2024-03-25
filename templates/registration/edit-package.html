@@ -1,0 +1,31 @@
+{% extends 'admin-base.html' %}
+{% load static %}
+{%load humanize %}
+
+{% block title%}
+Deenstar | Dashboard
+{% endblock title%}
+
+{% block content %}
+
+
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+            
+
+{{form.as_p}}
+            
+<button type="submit">Save Changes</button>
+
+</form>          
+            
+
+
+
+
+
+
+
+
+{% endblock content %}

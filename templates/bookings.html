@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+
+
+
+  {% block title %}
+  Deenstar | suleiman
+  {% endblock title %}
+ 
+
+ {% block content %}
+
+  <!-- ======= Intro Section ======= -->
+  <div class="intro-carousel swiper" style="padding-top: 12rem;">
+    
+
+   
+  </div><!-- End Intro Section -->
+
+
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+
+
+      <div class="mt-4 p-5 bg-warning text-white rounded text-center">
+
+        <h2>Trip Booking Information</h2>
+        <em>Please fill in all the required fields</em>
+        <hr>
+        {% if success %}
+        <div class="alert alert-success">
+          <strong>Success!</strong> {{success}}
+        </div>
+        {%elif fail%}
+        <div class="alert alert-danger">
+          <strong>Failed!</strong> {{fail}}
+        </div>
+        {%elif exists %}
+        <div class="alert alert-danger">
+          <strong>Failed!</strong> {{exists}}, please select a package <a href="{% url 'allpackages' %}"><strong>Here</strong></a>
+        </div>
+        {% else %}
+
+       <p> You're booking for:  <strong style="color: blue;">{{package.name}} </strong>  in <strong style="color: blue;">{{package.name.dest_id}}</strong></p>
+
+ {% endif %}
+
+
+  <form method="post" action="{% url 'toursave' %}">
+
+    {% csrf_token %}
+    <label for="fullname">Full Name</label>
+     <input type="text" name="fullname" class="form-control">
+
+     <label for="email">Email</label>
+     <input type="email" name="email" class="form-control">
+
+     <label for="identity">Identity Numbe</label>
+     <input type="number" name="identity" class="form-control">
+
+     <label for="phone">Phone Number</label>
+     <input type="number" name="phone" class="form-control">
+
+     
+     <input type="hidden" name="resident" class="form-control" value="Resident">
+
+     
+     <input type="hidden" name="package" class="form-control" value="{{package.id}}">
+
+     
+
+    <label for="price">Transportation Mode:</label>
+    <select class="selectpicker form-control" id="mode" name="price">
+      <option value="{{package.cruiser_price}}">Land Cuiser: {{package.cruiser_price| intcomma}} Per person</option>
+      <option value="{{van_price}}">Van: {{package.van_price| intcomma}} Per person</option>
+    
+    </select>
+    <br>
+    
+    
+    <button type="submit" class="btn btn-secondary btn-lg" >Submit Booking</button>
+   
+
+
+
+
+
+</form>
+
+
+</div>
+
+
+
+
+</div>
+<div class="col-sm-3">
+  
+</div>
+
+</div>
+
+
+
+
+
+{% endblock content %}

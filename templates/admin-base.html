@@ -1,0 +1,130 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <title>{% block title%} Dashboad {% endblock title%}</title>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{% static 'assets/dist/css/bootstrap.min.css'%}" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+  .fakeimg {
+    height: 200px;
+    background: #aaa;
+  }
+  </style>
+
+<link href="{% static 'dashboard.css' %}" rel="stylesheet">
+</head>
+<body>
+
+  
+
+<div class="p-5 bg-warning text-white text-center">
+  <h5 class="float-end">You're logged in as: {{user.username | capfirst}} | <a style="text-decoration: none;" href="{% url 'logout' %}">Logout</a></h5>
+  <h3>Take full control over Deenster website!</h3> 
+</div>
+
+
+
+
+
+
+
+
+
+<div class="container-fluid">
+
+  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2">Dashboard</h1>
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+          
+          {% block export%}
+          
+          
+          {% endblock export%}
+        </div>
+        
+      </div>
+    </div>
+
+
+
+
+
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="position-sticky pt-3 sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link {% block dash %}  {% endblock dash %} " aria-current="page" href="{% url 'home' %}">
+              <span data-feather="home" class="align-text-bottom"></span>
+              Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% block items %}  {% endblock items %}" href="{% url 'manage' %}">
+              <span data-feather="file-plus" class="align-text-bottom"></span>
+              Create Items
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% block settings %}  {% endblock settings %}" href="#">
+              <span data-feather="settings" class="align-text-bottom"></span>
+              System Settings
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link {% block booked %}  {% endblock booked %}" href="{% url 'booked' %}">
+              <span data-feather="users" class="align-text-bottom"></span>
+              Booked Customers
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link {% block reports %}  {% endblock reports %}" href="#">
+              <span data-feather="bar-chart-2" class="align-text-bottom"></span>
+              Reports
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link {% block rejected %}  {% endblock rejected %}" href="{% url 'rejected' %}">
+              <span data-feather="slash" class="align-text-bottom"></span>
+              Rejected Bookings
+            </a>
+          </li>
+        </ul>
+
+       
+      </div>
+    </nav>
+
+
+
+
+{% block content%}
+
+{% endblock content %}
+
+<!--Footer start-->
+
+<div class="mt-5 p-4 bg-dark text-white text-center">
+    <p>Designed by khamsa Developers</p>
+  </div>
+
+
+  <script src="{% static 'assets/dist/js/bootstrap.bundle.min.js' %}"></script>
+
+      <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+      <script src="{% static 'dashboard.js' %}"></script>
+  
+  </body>
+  {{ redirect_to_login_immediately }}
+  </html>
+
+  <!--Footer end-->
