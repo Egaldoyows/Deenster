@@ -1,0 +1,40 @@
+
+{% extends 'reset-main.html'%}
+
+
+{% block title %}
+Reset password
+{% endblock title %}
+
+{% block head %}
+Enter new password
+{% endblock head %}
+
+
+
+{% block content %}
+
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        
+
+
+        <p>Please enter your new password twice so we can verify you typed it in correctly.</p>
+        
+        <form  class="form", method="post">
+            {% csrf_token%}
+            {{form.as_p}}
+
+            <button class="btn btn-success" type="submit">Submit</button>
+        </form>
+
+
+        
+
+    </div>
+    <div class="col-sm-2"></div>
+    
+  </div>
+
+  {% endblock content%}

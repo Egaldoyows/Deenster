@@ -1,5 +1,5 @@
 from django import forms
-from main.models import Package,Activity,Hotel,Desination
+from main.models import Package,Activity,Hotel,Desination,AbstractUser
 
 
 class PackageForm(forms.ModelForm):
@@ -103,3 +103,14 @@ class DestinationForm(forms.ModelForm):
             'des_name': forms.TextInput(attrs={'class': 'form-control'}),
             'desc': forms.Textarea(attrs={'class': 'form-control'}),
         }
+
+
+
+
+class CreateUser(forms.ModelForm):
+    class Meta:
+        model = AbstractUser
+        fields = '__all__'
+
+
+       

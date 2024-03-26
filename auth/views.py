@@ -6,7 +6,7 @@ from django.db.models import Count
 
 # Project database model.
 from main.models import Desination,Tour,Package,Hotel,Activity,Addon
-from .forms import PackageForm,ActivityForm,HotelForm,DestinationForm
+from .forms import PackageForm,ActivityForm,HotelForm,DestinationForm,CreateUser
 
 
 
@@ -447,7 +447,7 @@ def edit_package(request):
     package_id=int(request.GET['package_id'])
     package = get_object_or_404(Package, pk=package_id)
     if request.method == 'POST':
-        form = PackageForm(request.POST, instance=package)
+        form = PackageForm(request.POST,request.FILES, instance=package)
         if form.is_valid():
             form.save()
             packages=Package.objects.all()
@@ -471,6 +471,12 @@ def package_delete(request):
         package.delete()
         
     return redirect('package-manager')
+
+
+def advanced_Settings(request):
+
+    
+    return render(request,"registration/advanced.html",{})
 
     
 

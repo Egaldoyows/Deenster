@@ -190,6 +190,16 @@ def single_package(request):
     
     else:
         return render(request,'package-view.html',{"error":"No package selected"})
+    
+
+
+
+
+def manage_packages(request):
+    
+        packages =Package.objects.all()
+        
+        return render(request, 'manage-package.html', {'packages': packages})
 
 
 
